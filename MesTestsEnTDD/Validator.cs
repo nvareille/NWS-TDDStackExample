@@ -1,16 +1,23 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace MesTestsEnTDD;
 
-public class Validator<T>
+public class Validator<T> 
+    where T : class
 {
-    private readonly T _obj;
+    private readonly T Model;
 
     public Validator(T obj)
     {
-        _obj = obj;
+        Model = obj;
     }
 
     public bool Validate()
     {
-        return (true);
+        ValidationContext ctx = new ValidationContext(Model, null, null);
+        List<ValidationResult> results = new();
+        bool result = System.ComponentModel.DataAnnotations.Validator.TryValidateObject(Model, ctx, results, true);
+
+        return (result);
     }
 }
