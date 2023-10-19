@@ -1,3 +1,4 @@
+using TDDStackExample.Shared;
 using TDDStackExample.Shared.Models;
 
 namespace MesTestsEnTDD;
@@ -32,7 +33,7 @@ public class InscriptionModelValidatorTests
     }
 
     [TestMethod]
-    public void InsciptionValideBadEmail()
+    public void InscriptionInvalideBadEmail()
     {
         Validator<InscriptionModel> validator = new Validator<InscriptionModel>(new InscriptionModel
         {
